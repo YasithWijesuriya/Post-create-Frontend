@@ -30,22 +30,22 @@ export default function NavigationBar() {
           </a>
 
           <div className="hidden md:flex flex-1 justify-center items-center gap-6">
-            <a
-              href="/display"
+            <Link
+              to="/display"
               className="px-6 py-2 rounded-full bg-blue-600 text-white font-medium hover:text-white hover:bg-blue-700 transition-all duration-200 shadow-sm"
             >
               Gallery
-            </a>
+            </Link>
 
 
 
             <SignedIn>
-              <a
-                href="/create"
+              <Link
+                to="/create"
                 className="px-6 py-2 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all duration-200 shadow-md"
               >
                 Create Post
-              </a>
+              </Link>
             </SignedIn>
 
             <SignedOut>
