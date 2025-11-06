@@ -6,7 +6,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const Api = createApi({
   reducerPath: "Api",
   baseQuery: fetchBaseQuery({ 
-    baseUrl: "http://localhost:3000/api", 
+    baseUrl:import.meta.env.VITE_API_URL, 
   prepareHeaders: async (headers) => {
       return new Promise((resolve) => {
         async function checkToken() {
