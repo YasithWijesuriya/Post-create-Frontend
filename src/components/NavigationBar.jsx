@@ -7,7 +7,7 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import daitLogo from "../assets/dait.png";
-import { Link } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function NavigationBar() {
   const [open, setOpen] = useState(false);
