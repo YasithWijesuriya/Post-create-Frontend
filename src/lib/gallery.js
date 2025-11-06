@@ -1,10 +1,9 @@
-const BASE_URL = import.meta.env.VITE_API_URL// e.g., "http://localhost:3000"
+const BASE_URL = import.meta.env.VITE_API_URL
 
 export const putGalleryImage = async ({ file }) => {
   try {
     const endpoint = `${BASE_URL}/api/gallery/images`;
 
-    // Step 1: Ask backend for signed upload URL
     const res = await fetch(endpoint, {
       method: "POST",
       headers: {
@@ -28,7 +27,6 @@ export const putGalleryImage = async ({ file }) => {
 
     const { url, publicUrl } = data;
 
-    // Step 2: Upload directly to signed URL
     const upload = await fetch(url, {
       method: "PUT",
       headers: {
@@ -41,7 +39,6 @@ export const putGalleryImage = async ({ file }) => {
       throw new Error(`Upload failed with status: ${upload.status}`);
     }
 
-    // Step 3: Return Cloudflare public URL
     return publicUrl.startsWith("http")
       ? publicUrl
       : `${BASE_URL}${publicUrl.startsWith("/") ? "" : "/"}${publicUrl}`;
