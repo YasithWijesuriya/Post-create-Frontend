@@ -1,13 +1,12 @@
-/* React-specific entry point that automatically generates
-   hooks corresponding to the defined endpoints */
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// Define a service using a base URL and expected endpoints
 export const Api = createApi({
   reducerPath: "Api",
   baseQuery: fetchBaseQuery({ 
-    baseUrl:import.meta.env.VITE_API_URL, 
-  prepareHeaders: async (headers) => {
+    baseUrl:`${BASE_URL}/api`, 
+    prepareHeaders: async (headers) => {
       return new Promise((resolve) => {
         async function checkToken() {
           const clerk = window.Clerk;
@@ -17,6 +16,7 @@ export const Api = createApi({
             resolve(headers);
           } else {
             setTimeout(checkToken, 500);
+            console.log("BASE_URL:", BASE_URL);
           }
         }
         checkToken();
