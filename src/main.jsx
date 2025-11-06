@@ -17,6 +17,7 @@ createRoot(document.getElementById("root")).render(
       <BrowserRouter>
       <NavigationBar />
       <Routes>
+        <Route path="" element={<DisplayPost/>}/>
         <Route path="/display" element={<DisplayPost/>}/>
         <Route path="/create"  element={<Gallery/>}/>
       </Routes>
